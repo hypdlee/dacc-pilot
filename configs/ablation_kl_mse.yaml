@@ -1,0 +1,5 @@
+# Section 8.1 / 16: declared ablations of the controller objective.
+run_name: ablation_kl_mse
+controller:
+  beta_kl: 0.1
+  score_loss: mse

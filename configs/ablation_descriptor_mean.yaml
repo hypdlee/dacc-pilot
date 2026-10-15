@@ -1,0 +1,4 @@
+# Section 6.3: global means only versus the full descriptor.
+run_name: ablation_descriptor_mean
+controller:
+  descriptor: mean

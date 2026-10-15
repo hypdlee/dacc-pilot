@@ -1,0 +1,5 @@
+# Section 6.2: expert-specific reduction / expansion maps (only if the tied
+# bank shows little headroom).
+run_name: ablation_untied
+model:
+  untied: true

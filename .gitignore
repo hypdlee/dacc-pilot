@@ -1,0 +1,8 @@
+# run outputs, datasets, caches
+runs/
+data/
+__pycache__/
+*.pyc
+.pytest_cache/
+*.egg-info/
+.venv/

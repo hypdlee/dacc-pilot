@@ -1,0 +1,6 @@
+# Section 9.3: optional unresolved-example specialisation (one-site weights).
+run_name: ablation_specialize
+bank:
+  specialize: true
+  spec_kappa: 0.5
+  spec_wmax: 2.0

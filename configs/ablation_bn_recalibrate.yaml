@@ -1,0 +1,5 @@
+# Section 10.2: recalibrate BN under the controller's decisions after each
+# alternating round instead of freezing running statistics.
+run_name: ablation_bn_recalibrate
+alternate:
+  bn_mode: recalibrate

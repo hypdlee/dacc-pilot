@@ -1,0 +1,4 @@
+# Transfer check on a simpler task (Section 15.2). Same protocol as the pilot.
+run_name: pilot_cifar10
+data:
+  dataset: cifar10

@@ -1,0 +1,39 @@
+# Tiny end-to-end smoke test on synthetic data (CPU, a few minutes).
+# Exercises every stage; numbers are meaningless.
+run_name: smoke
+out_root: ./runs
+device: cpu
+data:
+  dataset: synthetic
+  synthetic_train: 1200
+  synthetic_test: 200
+  synthetic_classes: 10
+model:
+  depth: 16
+  widen: 1
+static:
+  epochs: 5
+  lr: 0.05
+  batch_size: 64
+  warmup_epochs: 1
+  clean_train_eval_size: 200
+bank:
+  warm_epochs: 1
+  refine_epochs: 1
+  batch_size: 64
+controller:
+  epochs: 3
+  batch_size: 64
+router:
+  epochs: 2
+  batch_size: 64
+alternate:
+  rounds: 1
+  bank_epochs: 1
+  controller_epochs: 2
+  drift_subset: 100
+  recalib_batches: 5
+profile:
+  latency_images: 32
+  warmup_iters: 2
+  batch_sizes: [1, 16]

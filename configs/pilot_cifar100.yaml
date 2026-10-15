@@ -1,0 +1,73 @@
+# Primary mechanism pilot (Appendix B). Every value equals the code default;
+# listed explicitly so the run record is self-describing.
+run_name: pilot_cifar100
+out_root: ./runs
+device: auto
+amp: false
+deterministic: true
+data:
+  dataset: cifar100
+  root: ./data
+  bank_size: 40000
+  route_size: 5000
+  val_size: 5000
+  split_seed: 0
+model:
+  depth: 28
+  widen: 4
+  num_experts: 4
+  rank_divisor: 4
+  gain_init: 0.05
+  untied: false
+static:
+  epochs: 200
+  batch_size: 128
+  lr: 0.1
+  momentum: 0.9
+  weight_decay: 0.0005
+  warmup_epochs: 5
+  label_smoothing: 0.0
+  mix: none
+  checkpoint_rule: last
+bank:
+  warm_epochs: 10
+  warm_lr: 0.01
+  refine_epochs: 30
+  refine_corr_lr: 0.01
+  refine_shared_lr: 0.001
+  anchor_eta: 0.25
+  corr_weight_decay: 0.0005
+  specialize: false
+controller:
+  hidden: 128
+  descriptor: full
+  lr: 0.0003
+  weight_decay: 0.0001
+  batch_size: 256
+  epochs: 30
+  score_loss: huber
+  huber_delta: 0.1
+  beta_kl: 0.0
+  tau: 0.1
+  bilinear_rank: 2
+  match_capacity: true
+router:
+  hidden: 128
+  epochs: 30
+alternate:
+  rounds: 3
+  bank_epochs: 10
+  eps: 0.2
+  eps_final: 0.05
+  eps_schedule: fixed
+  bn_mode: frozen
+eval:
+  headroom_gate_pp: 0.5
+  coordination_gate_pp: 0.3
+  reference_static_acc: null     # fill in after reproducing the WRN-28-4 baseline
+  final_test: false              # flip only after all design choices are frozen
+profile:
+  latency_images: 1000
+  warmup_iters: 50
+  batch_sizes: [1, 128]
+  precision: fp32

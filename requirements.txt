@@ -1,0 +1,8 @@
+torch>=2.2
+torchvision>=0.17
+numpy>=1.24
+pyyaml>=6.0
+pillow>=9.0
+onnx>=1.15            # export stage
+onnxruntime>=1.17     # export verification (optional; export still writes the file without it)
+pytest>=7.0

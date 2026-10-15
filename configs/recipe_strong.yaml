@@ -1,0 +1,9 @@
+# Separate recipe experiment (Section 9.1): 300 epochs, CutMix, EMA weights.
+# Diagnostic targets still use clean views; mixed-label training accuracy is
+# not reported as clean accuracy.
+run_name: recipe_strong_cifar100
+static:
+  epochs: 300
+  mix: cutmix
+  mix_alpha: 1.0
+  ema_decay: 0.999
